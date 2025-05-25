@@ -30,8 +30,10 @@ public class Inventory
         return null;
     }
 
-    public Guitar search(Guitar searchGuitar)
+    //The search() now returns a list of guitar that matches the specifications
+    public List search(Guitar searchGuitar)
     {
+        List matchingGuitars = new LinkedList();    // ArrayList can also be used.
         for(Iterator i = guitars.iterator() ; i.hasNext();)
         {
             Guitar guitar = (Guitar)i.next();
@@ -62,7 +64,8 @@ public class Inventory
             {
                 continue;
             }
+            matchingGuitars.add(guitar);
         }
-        return null;
+        return matchingGuitars;
     }
 }
