@@ -1,6 +1,6 @@
 import java.util.Iterator;
 import java.util.List;
-import java.util.zip.Adler32;
+
 
 public class FindGuitarTester
 {
@@ -9,7 +9,7 @@ public class FindGuitarTester
        Inventory inventory = new Inventory();
        initializeInventory(inventory);
 
-       GuitarSpec whatErinLikes = new GuitarSpec(Builder.FENDER, "Stratoscastor" , Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
+       GuitarSpec whatErinLikes = new GuitarSpec(Builder.FENDER, "Stratoscastor" , Type.ELECTRIC, Wood.ALDER, Wood.ALDER, 12);
 
        List matchingGuitars = inventory.search(whatErinLikes);
        
@@ -22,7 +22,7 @@ public class FindGuitarTester
                 Guitar guitar = (Guitar)i.next();
                 GuitarSpec spec = guitar.getSpec();
 
-                System.out.println(spec.getBuilder() + " " + spec.getModel() + " " + spec.getType() +" guitar , "+ spec.getBackWood() + " back and sides " + spec.getTopWood() + " top. You can have it only for "+guitar.getPrice() + " !" );
+                System.out.println(spec.getBuilder() + " " + spec.getModel() + " " + spec.getType() +" guitar , "+ spec.getBackWood() + " back and sides " + spec.getTopWood() + " top , " + spec.getNumStrings() + " strings guitar . You can have it only for "+guitar.getPrice() + " !" );
             }
             
        }
@@ -34,7 +34,7 @@ public class FindGuitarTester
 
     public static void initializeInventory(Inventory inventory)
     {
-        GuitarSpec spec1 = new GuitarSpec(Builder.FENDER, "Stratoscastor", Type.ELECTRIC,Wood.ALDER , Wood.ALDER);
+        GuitarSpec spec1 = new GuitarSpec(Builder.FENDER, "Stratoscastor", Type.ELECTRIC,Wood.ALDER , Wood.ALDER , 12);
         inventory.addGuitar("V95693", 1499.95, spec1);
         inventory.addGuitar("V9512", 1549.95, spec1);
         
