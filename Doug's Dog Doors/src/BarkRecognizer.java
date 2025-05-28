@@ -1,3 +1,6 @@
+import java.util.Iterator;
+import java.util.List;
+
 public class BarkRecognizer {
     private DogDoor door;
 
@@ -6,18 +9,21 @@ public class BarkRecognizer {
         this.door = door;
     }
 
-    //Sam's way to compare sounds of bark ( delegating to Bark class )
+    //Maria's way to compare sounds of bark ( delegating to Bark class )
     public void recognize(Bark bark)
     {
         System.out.println("Bark Recognizer heard a "+bark.getSound());
 
-        if(door.getAllowedBark().equals(bark))
+        List allowedBarks = door.getAllowedBarks();
+        for(Iterator i = allowedBarks.iterator() ; i.hasNext();)
         {
-            door.open();
+            Bark allowedBark = (Bark)i.next();
+            if(allowedBark.equals(bark))
+            {
+                door.open();
+                return;
+            }
         }
-        else
-        {
-            System.out.println("This dog is not allowed");
-        }
+        System.out.println("this dog is not allowed");
     }
 }

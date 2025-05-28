@@ -1,14 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class DogDoor
 {
     private boolean open;
-    private Bark allowedBark; 
+    private List allowedBarks; 
 
     public DogDoor()
     {
         this.open = false;
+        this.allowedBarks = new ArrayList();
+    }
+
+    public void addAllowedBark(Bark bark)
+    {
+        allowedBarks.add(bark);        
+    }
+
+    public List getAllowedBarks()
+    {        
+        return allowedBarks;
     }
 
     public void open()
@@ -39,15 +52,5 @@ public class DogDoor
         return open;
     }
 
-    public void setAllowedBark(Bark bark)
-    {
-        this.allowedBark = bark;
-        
-    }
-
-    public Bark getAllowedBark()
-    {
-        
-        return this.allowedBark;
-    }
+    
 }
