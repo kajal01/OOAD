@@ -6,22 +6,17 @@ public class BarkRecognizer {
         this.door = door;
     }
 
-    // public void recognize(String bark)
-    // {
-    //     System.out.println("BarkRecognizer : Heard a '"+ bark +"'.");
-    //     door.open();
-    // }
-
-    //Randy's way to recognize bark
-    public void recognize(String bark)
+    //Sam's way to compare sounds of bark ( delegating to Bark class )
+    public void recognize(Bark bark)
     {
-        System.out.println(" BarkRecognizer :  Heard a '"+bark+"'");
+        System.out.println("Bark Recognizer heard a "+bark.getSound());
 
         if(door.getAllowedBark().equals(bark))
         {
             door.open();
         }
-        else{
+        else
+        {
             System.out.println("This dog is not allowed");
         }
     }
